@@ -5,7 +5,7 @@ var RESULT_HTML_TEMPLATE = (
   '<div>' +
     '<h2>' +
     // '<a class="js-video-name" href="" target="_blank"></a></h2>' +
-    '<a class="js-video-thumbnail" href="" target="blank"><img id="imgDisp" src="" /></a>' + 
+    '<a class="js-video-thumbnail" href="" target="blank"><img class="contain" id="imgDisp" src="" /></a>' + 
   '</div>'
 );
 
@@ -31,7 +31,7 @@ function getDataFromApi(searchTerm, callback) {
 function renderResult(result) {
   var template = $(RESULT_HTML_TEMPLATE);
   var imageURL = result.snippet.thumbnails.high.url;
-  var youTubeURL = "youtube.com/watch?v=" + result.id.videoId;
+  var youTubeURL = "https://youtube.com/watch?v=" + result.id.videoId;
   // template.find(".js-video-name").text(result.snippet.title).attr("href", youTubeURL);
   template.find(".js-video-thumbnail").attr("href", youTubeURL);
   template.find("#imgDisp").attr("src", imageURL);
@@ -42,8 +42,12 @@ function renderResult(result) {
 function displayYouTubeSearchData(data) {
   var results = data.items.map(function(item, index) {
     return renderResult(item);
+
   });
+  $(".js-search-results").hide().fadeIn(2000);
+  // $('.js-search-results').animate({'marginTop':'+=-200px','opacity':'1'},1500);
   $('.js-search-results').html(results);
+
 }
 
 function watchSubmit() {
@@ -54,6 +58,7 @@ function watchSubmit() {
     // clear out the input
     queryTarget.val("");
     getDataFromApi(query, displayYouTubeSearchData);
+
   });
 }
 

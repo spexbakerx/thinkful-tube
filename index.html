@@ -8,21 +8,44 @@
           src="https://code.jquery.com/jquery-3.2.1.min.js"
           integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
           crossorigin="anonymous"></script>
-        <link href="index.css" rel="stylesheet" type="text/css" />
+          <link href="index.css" rel="stylesheet" type="text/css" />
+          <link href="float-grid.css" rel="stylesheet" type="text/css" />
+          <link href="https://fonts.googleapis.com/css?family=Overpass+Mono:300,400,600,700" rel="stylesheet">
     </head>
     <body>
+
+  <header>
+      <div class="col-12 navbar sticky">
+        <ul class="nav-primary">
+          <li class="nav-primary nav-primary_logo">
+             <img src="https://tf-shoebill-prod.imgix.net/img/thinkful-logo-white.dd5c47c.svg" alt="Thinkful logo">
+             
+          </li>
+          <li class="tube">
+            <span class="tube-box">TUBE</span>
+          </li>
+        </ul>
+    </div>
+  </header>
+
+
       <main>
-        <h1>Return Video Thumbnails from YouTube</h1>
-          <form action="#" class="js-search-form">
-            <label for="query"></label>
-            <input type="text" class="js-query">
-            <button type="submit">Search</button>
-          </form>
-          
-          <h2>Results</h2>
-          <div class="js-search-results">
-            
+
+      <div class="row">
+        <div class="col-6 sticky">
+          <h1>Search for a YouTube video!</h1>
+            <form action="#" class="js-search-form">
+              <label for="query"></label>
+              <input type="text" class="js-query" placeholder="cats, etc.">
+              <button type="submit">Search</button>
+            </form>
           </div>
+          
+        <div class="col-6">
+          <div class="js-search-results">
+          </div>
+        </div>
+
       </main>
       <script src="index.js"></script>
     </body>
