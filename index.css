@@ -62,6 +62,12 @@ h1 {
 .contain {
 	object-fit: contain;
 	width: 480px;
+	border: 1px solid white
+}
+
+.contain:hover {
+	box-shadow: 4px 4px 0 #ffffff;
+	transform: translate(-3px,-3px);
 }
 
 .sticky {
