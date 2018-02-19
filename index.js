@@ -4,9 +4,8 @@ var YOUTUBE_SEARCH_URL = 'https://www.googleapis.com/youtube/v3/search';
 var RESULT_HTML_TEMPLATE = (
   '<div>' +
     '<h2>' +
-    '<a class="js-video-name" href="" target="_blank"></a></h2>' +
-    // '<a class="js-video-thumbnail" src="" id="imageID">' +
-    '<img id="imgDisp" src="" />' + 
+    // '<a class="js-video-name" href="" target="_blank"></a></h2>' +
+    '<a class="js-video-thumbnail" href="" target="blank"><img id="imgDisp" src="" /></a>' + 
   '</div>'
 );
 
@@ -29,25 +28,12 @@ function getDataFromApi(searchTerm, callback) {
 }
 
 
-
-// function renderResult(result) {
-//   var template = $(RESULT_HTML_TEMPLATE);
-//   var title = value.snippet.title;
-//   var thumbnail = value.snippet.thumbnails.default.url;
-//   console.log(title);
-//   template.find(".js-video-name").text(title).attr("href", result.html_url);
-//   template.find(".js-video-thumbnail").thumbnail.attr("href", result.owner.html_url);
-//   // template.find(".js-issues-count").text(result.open_issues);
-//   return template;
-// }
-
 function renderResult(result) {
-  console.log(result);
   var template = $(RESULT_HTML_TEMPLATE);
-  var imageURL = result.snippet.thumbnails.medium.url;
-  console.log(imageURL);
-  template.find(".js-video-name").text(result.snippet.title).attr("href", result.etag);
-  // template.find(".js-video-thumbnail").text(result.snippet.thumbnails.medium.url);
+  var imageURL = result.snippet.thumbnails.high.url;
+  var youTubeURL = "youtube.com/watch?v=" + result.id.videoId;
+  // template.find(".js-video-name").text(result.snippet.title).attr("href", youTubeURL);
+  template.find(".js-video-thumbnail").attr("href", youTubeURL);
   template.find("#imgDisp").attr("src", imageURL);
 
   return template;
